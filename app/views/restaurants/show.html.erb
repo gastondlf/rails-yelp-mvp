@@ -1,0 +1,38 @@
+<div class="container mb-3">
+    <div class="row d-flex">
+        <div class="col-8 shadow-lg p-2 bg-white mt-4 rounded">
+            <h2> <%= @restaurant.name %> </h2>
+            <p> <i class="fa-solid fa-utensils"></i> <%= @restaurant.category %></p>
+            <p> <i class="fa-solid fa-location-dot"></i> <%= @restaurant.address %> 
+            <% if !@restaurant.phone_number.empty? %>        
+            | <i class="fa-solid fa-phone"></i> <%= @restaurant.phone_number %>
+            <% end %>
+            </p>
+            <p> <%= link_to "Back", restaurants_path %></p>
+            <hr>
+            <div>
+                <p>About <strong> <%= @restaurant.name %></strong> </p>
+                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+                    pariatur. Excepteur sint occaecat cupidatat non proident, 
+                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between align-items-center">
+                <p><strong>Reviews</strong></p>
+                <%= link_to "+ New Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary p-1" %>
+            </div>
+            <ul class="list-group mt-3 p-2">
+                <% @restaurant.reviews.each do |review| %>
+                     <li class="list-group-item border mb-2"><i class="fa-solid fa-star" style="font-size: 10px;"></i> <span style="font-size: 12px;"><%= review.rating %>/5</span>
+                        - <em><%= review.content %></em></li>
+                 <% end %>
+            </ul>
+
+        </div>
+    </div>
+</div>

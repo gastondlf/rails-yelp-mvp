@@ -1,0 +1,23 @@
+<div class="container mb-3">
+    <div class="row d-flex">
+        <div class="col-8 shadow-lg p-2 bg-white mt-4 rounded">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Yelp MVP</h2>
+                <%= link_to "+ New Restaurant", new_restaurant_path, class: "btn btn-primary p-2" %>
+            </div>
+            <hr>
+            <div id="restaurants" class="p-2">
+                <% @restaurants.each do |restaurant| %>
+                <div>
+                    <h4> <%= link_to "#{restaurant.name}", restaurant_path(restaurant), class: "text-decoration-none" %> </h4>
+                    <p><i class="fa-solid fa-location-dot" style="font-size: 12px;"></i> <%= restaurant.address %>
+                    <% if !restaurant.phone_number.empty? %>
+                        | <i class="fa-solid fa-phone" style="font-size: 12px;"></i> <%= restaurant.phone_number %>
+                        <% end %>
+                    </p>
+                </div>    
+            <% end %>
+            </div>
+        </div>
+    </div>
+</div>
